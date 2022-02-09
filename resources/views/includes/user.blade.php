@@ -34,13 +34,13 @@
                 @endphp
                 <td>{{ isset($role) ? $role : 'user' }}</td>
                 <td>
-                    <a class="btn btn-success btn-sm disabled" href="{{ route('question.edit', $data->id) }}">Voir</a>
-                    <a class="btn btn-info btn-sm  disabled" href="{{ route('question.edit', $data->id) }}">Editer</a>
+                    <a class="btn btn-success btn-sm disable" href="{{ route('question.edit', $data->id) }}">Voir</a>
+                    <a class="btn btn-info btn-sm  disable" href="{{ route('question.edit', $data->id) }}">Editer</a>
 
-                    <form class="d-inline" action="{{ route('question.destroy', $data->slug) }}" method="post">
+                    <form class="d-inline" action="{{ route('question.destroy', $data->id) }}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button class="btn disabled btn-danger btn-sm " type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ?')" 
+                        <button class="btn disable btn-danger btn-sm " type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ?')" 
                         >Supprimer</button>
                     </form>
 
