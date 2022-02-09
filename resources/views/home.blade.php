@@ -37,7 +37,7 @@
                     @endforeach
 
                     @if (Route::currentRouteName() === 'question')
-                        <a class="btn sm-black mb-3" href="{{route('createQuestion')}}">Creation/Modification</a>
+                        <a class="btn sm-black mb-3" href="{{route('question.create')}}">Creation/Modification</a>
                         @include('includes.question')
                     @else
                         @if (Route::currentRouteName() === 'user')
@@ -48,6 +48,9 @@
                             @include('includes.list_diagnostic')
                         @endif
                     @endif
+                    <div class="d-flex justify-content-center">
+                        {{$datas->links()}}
+                    </div>
                 </div>
             </div>
         </div>

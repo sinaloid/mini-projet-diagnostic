@@ -12,24 +12,27 @@
     </thead>
     <tbody>
 
+        @foreach ($datas as $data)
+            <tr class="text-center">
+                <td>{{++$i}}</td>
+                <td>{{$data->categorie_1}}</td>
+                <td>{{$data->categorie_2}}</td>
+                <td>{{$data->categorie_3}}</td>
+                <td>{{$data->categorie_4}}</td>
+                <td><span class="badge badge-lg badge-secondary text-white">{{$data->created_at}}</span></td>
+                <td>
+                    <a class="btn btn-success btn-sm disabled" href="{{ route('question.edit', $data->slug) }}">Voir</a>
+                    <a class="btn btn-info btn-sm  disabled" href="{{ route('question.edit', $data->slug) }}">Editer</a>
+                    <form class="d-inline disabled" action="{{ route('question.destroy', $data->slug) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger btn-sm  disabled" type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ?')" 
+                        >Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
 
-        <tr class="text-center" style='background:#d9edf7'>
-
-            <td>1</td>
-            <td>14</td>
-            <td>5</td>
-            <td>5</td>
-            <td>5</td>
-
-            <td><span class="badge badge-lg badge-secondary text-white">12/12/2020</span></td>
-
-            <td>
-                <a class="btn btn-success btn-sm" href="#">Voir</a>
-                <a class="btn btn-info btn-sm " href="#">Editer</a>
-                <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer ?')" class="btn btn-danger btn-sm "
-                    href="#">Supprimer</a>
-            </td>
-        </tr>
         <!--tr class="text-center">
             <td>No user availabe now !</td>
         </tr-->
