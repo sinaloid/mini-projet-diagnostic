@@ -7,26 +7,46 @@
                 <div class="card">
                     <div class="card-header">
                         <h3>
-                            <i class="fas fa-users mr-2"></i>List des Diagnostics <span class="float-right"><strong>
-                                <div class="d-inline-block">
-                                    <span class="badge badge-lg btn sm-black btn-sm  ">questions</span></strong></span>
-                                    <span class="badge badge-lg btn sm-black btn-sm ">utilisateurs</span></strong></span>
-                                </div>
+                            @if (Route::currentRouteName() === 'question')
+                                <i class="fas fa-users mr-2"></i>List des questions <span class="float-right"><strong>
+                            @else
+                                @if (Route::currentRouteName() === 'user')
+                                    <i class="fas fa-users mr-2"></i>List des utilisateurs <span class="float-right"><strong>
+                                @else
+                                    <i class="fas fa-users mr-2"></i>List des Diagnostics <span class="float-right"><strong>
+                                @endif
+                            @endif
+                            
+                            <div class="d-inline-block">
+                                    <a href="{{route('list_diagnostic')}}" class="badge badge-lg btn sm-black btn-sm  ">liste</a>
+                                    <a href="{{route('question')}}" class="badge badge-lg btn sm-black btn-sm  ">questions</a>
+                                    <a href="{{route('user')}}" class="badge badge-lg btn sm-black btn-sm ">utilisateurs</a>
+                            </div>
                         </h3>
 
-                    </div>
+                </div>
 
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
+                <div class="card-body table-responsive">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    @foreach (['kkkk', 'ldlldl'] as $data)
+                    @endforeach
+
+                    @if (Route::currentRouteName() === 'question')
+                        @include('question')
+                    @else
+                        @if (Route::currentRouteName() === 'user')
+                            @include('user')
+                        @else
+                            @include('list_diagnostic')
                         @endif
-
-                        {{ __('You are logged in!') }}
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection

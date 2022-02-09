@@ -26,5 +26,8 @@ Route::get('diagnostic/test', function () { return view('diagnos_test');})->name
 
 
 Auth::routes();
+Route::get('/home/list_diagnostic', function () { return view('home');})->name('list_diagnostic');
+Route::get('/home/question', function () { return view('home');})->name('question');
+Route::get('/home/user', function () { return view('home');})->name('user');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
