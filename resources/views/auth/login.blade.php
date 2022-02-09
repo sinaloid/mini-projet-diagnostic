@@ -66,6 +66,8 @@
                         </div>
                     </form>
                 </div>
+
+                <div class="mx-auto ">Je n'ai pas de compte <a href="{{route('register')}}">Inscrivez-vous ici</a> </div>
             </div>
         </div>
     </div>
