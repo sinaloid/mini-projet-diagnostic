@@ -35,10 +35,10 @@
                 Découvrez votre personnalité la plus dominante
             </h2>
             <div class="d-grid gap-2">
-                <Button class="btn btn-call">
+                <a href="{{ route('diagnostic') }}" class="btn btn-call">
                     Trouvez votre niveau d'assertivité
                     maintenant 
-                </Button>
+                </a>
             </div>
             <p class="card-text my-1">
                 - Répondez à 60 questions
