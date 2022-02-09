@@ -19,7 +19,7 @@
             <td>
                 <a class="btn btn-success btn-sm" href="#">Voir</a>
                 <a class="btn btn-info btn-sm " href="#">Editer</a>
-                <a onclick="return confirm('Are you sure To Delete ?')" class="btn btn-danger btn-sm "
+                <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer ?')" class="btn btn-danger btn-sm "
                     href="#">Supprimer</a>
             </td>
         </tr>
