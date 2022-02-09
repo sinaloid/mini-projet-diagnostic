@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,4 +31,9 @@ Route::get('/home/list_diagnostic', function () { return view('home');})->name('
 Route::get('/home/question', function () { return view('home');})->name('question');
 Route::get('/home/user', function () { return view('home');})->name('user');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home/question/create', [HomeController::class, 'createQuestion'])->name('createQuestion');
+Route::get('/home/question/update', [HomeController::class, 'updateQuestion'])->name('updateQuestion');
+Route::get('/home/user/create', [HomeController::class, 'createUser'])->name('createUser');
+Route::get('/home/user/update', [HomeController::class, 'updateUser'])->name('updateUser');
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');

@@ -5,7 +5,9 @@
             <th class="text-center">Fuite/Passivité</th>
             <th class="text-center">Attaque/Agressivité</th>
             <th class="text-center">Manipulation</th>
-            <th width='25%' class="text-center">Assertive</th>
+            <th class="text-center">Assertive</th>
+            <th class="text-center">Creation</th>
+            <th width='25%' class="text-center">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -14,8 +16,10 @@
         <tr class="text-center" style='background:#d9edf7'>
 
             <td>1</td>
-            <td>Ounoid</td>
-            <td>exemple@gmail.com</td>
+            <td>14</td>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
 
             <td><span class="badge badge-lg badge-secondary text-white">12/12/2020</span></td>
 

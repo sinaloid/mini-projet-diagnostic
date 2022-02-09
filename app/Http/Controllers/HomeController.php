@@ -25,4 +25,24 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function createQuestion(){
+         
+        return "Create";
+    }
+
+    public function updateQuestion(){
+         
+        return "update question";
+    }
+
+    public function createUser(){
+         
+        return "update question";
+    }
+
+    public function updateUser(){
+         
+        return "update question";
+    }
 }

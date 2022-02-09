@@ -18,13 +18,13 @@
     <div class="w-80 mx-auto">
         <!--div class="w-5 d-inline-block"><span class="w-progres">Progrès </span></div-->
         <div class=" d-inline-block w-100">
-            <div class="progress-bar" style="width:100%">70%</div>
+            <div class="progress-bar" style="width:70%">70%</div>
         </div>
     </div>
 </div>
 <div class="col-12 mt-3">
     <div class="card py-4 px-1 justify-content-center mx-auto card-width">
-        <table class="table table-bordered mt-2 w-time-quest mx-auto">
+        <table class="table table-sm table-bordered mt-2 w-time-quest mx-auto">
             <tbody>
             <tr>
                 <td class="col-6">1/60</td>
@@ -36,13 +36,13 @@
         </table>
         <div class="row">
             <div class="col-12">
-                <p class="text-center card-text">
+                <p class="text-center card-text font-weight-bold" style="font-size: 1.4em">
                     Je préfère dissimuler ce que je pense ou
                     ressens si je connais la bien la personne
                 </p class="text-center card-text">
                 <div class="text-center my-2">
-                    <Button class="btn btn-primary">plutôt vrai</Button>
-                    <Button class="btn btn-primary">plutôt faux</Button>
+                    <Button class="btn sm-black">plutôt vrai</Button>
+                    <Button class="btn sm-black">plutôt faux</Button>
                 </div>
             </div>
         </div>

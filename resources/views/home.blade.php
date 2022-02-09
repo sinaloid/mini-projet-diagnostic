@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="card w-100">
+                <div class="card">
                     <div class="card-header">
                         <h3>
                             @if (Route::currentRouteName() === 'question')
@@ -32,16 +32,20 @@
                             {{ session('status') }}
                         </div>
                     @endif
+
                     @foreach (['kkkk', 'ldlldl'] as $data)
                     @endforeach
 
                     @if (Route::currentRouteName() === 'question')
-                        @include('question')
+                        <a class="btn sm-black mb-3" href="{{route('createQuestion')}}">Creation/Modification</a>
+                        @include('includes.question')
                     @else
                         @if (Route::currentRouteName() === 'user')
-                            @include('user')
+                            <a class="btn sm-black mb-3" href="{{route('createUser')}}">Creation/Modification</a>
+                            @include('includes.user')
                         @else
-                            @include('list_diagnostic')
+                            <a class="btn sm-black mb-3" href="{{route('diagnostic')}}">Nouveau diagnostic</a>
+                            @include('includes.list_diagnostic')
                         @endif
                     @endif
                 </div>
