@@ -88,6 +88,10 @@ class HomeController extends Controller
         return Diagnostic::all();
     }
 
+    public function storeDiagnostique(Request $request){
+
+    }
+
     public function createDiagnostic(){
         $data = new Diagnostic();
         $data->user_id = auth()->user()->id;

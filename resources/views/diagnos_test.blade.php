@@ -32,7 +32,7 @@
             </table>
             <div class="row">
                 <div class="col-12">
-                    <form action="">
+                    <form id="reponse" action="" method="post">
                         @csrf
                         @foreach ($datas as $data)
                             @if ($i === 1)
@@ -60,6 +60,13 @@
                         <Button id="btn2" onclick="reponse(0)" class="btn sm-black">plutôt faux</Button>
                     </div>
                 </div>
+            </div>
+            
+        </div>
+        <div class="col-8 mx-auto mt-2 py-4 card">
+            <div class="col-12 text-center">
+                <a class="btn sm-black" href="#">Voir les questions</a>
+                <a class="btn sm-black" href="#">Resultat pdf ou csv</a>
             </div>
         </div>
     </div>
