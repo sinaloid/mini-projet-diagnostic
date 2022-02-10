@@ -63,10 +63,10 @@
             </div>
             
         </div>
-        <div class="col-8 mx-auto mt-2 py-4 card">
+        <div class="col-8 mx-auto mt-1 py-4 card">
             <div class="col-12 text-center">
-                <a class="btn sm-black" href="#">Voir les questions</a>
-                <a class="btn sm-black" href="#">Resultat pdf ou csv</a>
+                <a class="btn mt-2 sm-black" href="#">Voir les questions</a>
+                <a class="btn mt-2 sm-black" href="#">Resultat pdf ou csv</a>
             </div>
         </div>
     </div>
