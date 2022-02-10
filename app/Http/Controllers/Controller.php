@@ -26,6 +26,13 @@ class Controller extends BaseController
         return "Diagnostic";
     }
 
+    public function test(){
+
+        $datas = Question::all();//->getColumnListing('question');
+        $i = 1;
+        return view('diagnos_test', compact('datas','i'));
+    }
+
     public function createCategorie(){
         $categories = ['Attitude de fuite ou Passivité', 
         'Attitude dattaque ou Agressivité', 
