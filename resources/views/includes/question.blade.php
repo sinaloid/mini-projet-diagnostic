@@ -18,7 +18,7 @@
                 <td><span class="badge badge-lg badge-secondary text-white">{{ $data->created_at }}</span></td>
 
                 <td>
-                    <a class="btn btn-success btn-sm" href="{{ route('question.edit', $data->slug) }}">Voir</a>
+                    <a class="btn btn-success btn-sm" href="{{ route('question.show', $data->slug) }}">Voir</a>
                     <a class="btn btn-info btn-sm " href="{{ route('question.edit', $data->slug) }}">Editer</a>
                     
                     <form class="d-inline" action="{{ route('question.destroy', $data->slug) }}" method="post">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Question;
 use App\Models\User;
 use App\Models\Diagnostic;
+use App\Models\Option;
 
 class HomeController extends Controller
 {
@@ -33,16 +34,28 @@ class HomeController extends Controller
 
     public function question(){
 
-        $datas = Question::paginate(5);
-        $i = 0;
-        return view('home',compact('datas','i'));
+        $idAdmin = Option::all()->first()->user_id;
+            if(auth()->user()->id == $idAdmin ){
+                $datas = Question::paginate(5);
+                $i = 0;
+            return view('home',compact('datas','i'));
+
+        }
+        return redirect()->route('allDiagnostic');
+
+        
     }
 
     public function user(){
 
-        $datas = User::paginate(5);
-        $i = 0;
-        return view('home',compact('datas','i'));
+        $idAdmin = Option::all()->first()->user_id;
+            if(auth()->user()->id == $idAdmin ){
+                $datas = User::paginate(5);
+                $i = 0;
+                return view('home',compact('datas','i'));
+        }
+        return redirect()->route('allDiagnostic');
+        
     }
 
 
@@ -58,7 +71,7 @@ class HomeController extends Controller
 
     public function createUser(){
          
-        return view('create');
+        return view('user.create');
     }
 
     public function updateUser(){

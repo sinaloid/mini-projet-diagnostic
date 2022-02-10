@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,16 +29,20 @@ Route::get('diagnostic/test', function () { return view('diagnos_test');})->name
 
 
 Auth::routes();
-Route::get('/home/list_diagnostic',[HomeController::class, 'index'])->name('list_diagnostic');
-Route::get('/home/question', [HomeController::class, 'question'])->name('question');
-Route::get('/home/user', [HomeController::class, 'user'])->name('user');
+Route::get('/home',[HomeController::class, 'index'])->name('home');
+Route::get('/home/allDiagnostic',[HomeController::class, 'index'])->name('allDiagnostic');
+Route::get('/home/allQuestion', [HomeController::class, 'question'])->name('allQuestion');
+Route::get('/home/allUser', [HomeController::class, 'user'])->name('allUser');
 
 //Route::get('/home/question/create', [HomeController::class, 'createQuestion'])->name('createQuestion');
 //Route::post('/home/question/update', [HomeController::class, 'updateQuestion'])->name('updateQuestion');
-Route::get('/home/user/create', [HomeController::class, 'createUser'])->name('createUser');
-Route::post('/home/user/update', [HomeController::class, 'updateUser'])->name('updateUser');
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+/*Route::get('/home/user/create', [HomeController::class, 'createUser'])->name('createUser');
+Route::post('/home/user/store', [HomeController::class, 'storeUser'])->name('storeUser');
+Route::post('/home/user/update', [HomeController::class, 'updateUser'])->name('updateUser');
+Route::get('/home/user/create', [HomeController::class, 'createUser'])->name('createUser');*/
+
+Route::resource('/home/user', UserController::class);
 
 Route::get('createCategorie', [Controller::class, 'createCategorie']);
 Route::get('createRole', [Controller::class, 'createRole']);

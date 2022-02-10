@@ -6,21 +6,29 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3>
-                            @if (Route::currentRouteName() === 'question')
-                                <i class="fas fa-users mr-2"></i>Liste des questions <span class="float-right"><strong>
+                        <h3 class="font-weight-bold">
+                            @if (Route::currentRouteName() === 'allQuestion')
+                                <i class="fas fa-users mr-2"></i>Liste des questions <span class="float-right"><span>
                             @else
-                                @if (Route::currentRouteName() === 'user')
-                                    <i class="fas fa-users mr-2"></i>Liste des utilisateurs <span class="float-right"><strong>
+                                @if (Route::currentRouteName() === 'allUser')
+                                    <i class="fas fa-users mr-2"></i>Liste des utilisateurs <span class="float-right"><span>
                                 @else
-                                    <i class="fas fa-users mr-2"></i>Liste des Diagnostics <span class="float-right"><strong>
+                                    <i class="fas fa-users mr-2"></i>Liste des diagnostics <span class="float-right"><span>
                                 @endif
                             @endif
                             
                             <div class="d-inline-block">
-                                    <a href="{{route('list_diagnostic')}}" class="badge badge-lg btn sm-black btn-sm  ">liste</a>
-                                    <a href="{{route('question')}}" class="badge badge-lg btn sm-black btn-sm  ">questions</a>
-                                    <a href="{{route('user')}}" class="badge badge-lg btn sm-black btn-sm ">utilisateurs</a>
+                                    <a href="{{route('allDiagnostic')}}" class="badge badge-lg btn sm-black btn-sm  ">liste</a>
+                                    @php
+                                         $idAdmin = App\Models\Option::all()->first();
+                                        if(isset($idAdmin)){
+                                            $isAdmin = ($idAdmin->user_id == auth()->user()->id) ? true : false;
+                                        }
+                                    @endphp
+                                    @if ($isAdmin)
+                                        <a href="{{route('allQuestion')}}" class="badge badge-lg btn sm-black btn-sm  ">questions</a>
+                                        <a href="{{route('allUser')}}" class="badge badge-lg btn sm-black btn-sm ">utilisateurs</a>
+                                    @endif
                             </div>
                         </h3>
 
@@ -33,15 +41,12 @@
                         </div>
                     @endif
 
-                    @foreach (['kkkk', 'ldlldl'] as $data)
-                    @endforeach
-
-                    @if (Route::currentRouteName() === 'question')
+                    @if (Route::currentRouteName() === 'allQuestion')
                         <a class="btn sm-black mb-3" href="{{route('question.create')}}">Creation/Modification</a>
                         @include('includes.question')
                     @else
-                        @if (Route::currentRouteName() === 'user')
-                            <a class="btn sm-black mb-3" href="{{route('createUser')}}">Creation/Modification</a>
+                        @if (Route::currentRouteName() === 'allUser')
+                            <a class="btn sm-black mb-3" href="{{route('user.create')}}">Creation/Modification</a>
                             @include('includes.user')
                         @else
                             <a class="btn sm-black mb-3" href="{{route('diagnostic')}}">Nouveau diagnostic</a>
