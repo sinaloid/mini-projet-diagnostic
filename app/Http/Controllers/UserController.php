@@ -19,6 +19,7 @@ class UserController extends Controller
         /*$datas = User::paginate(5);
         $i = 0;
         return view('home',compact('datas','i'));*/
+        return redirect()->route('home');
     }
     
     /**
