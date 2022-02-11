@@ -32,7 +32,7 @@
             </table>
             <div class="row">
                 <div class="col-12">
-                    <form id="reponse" action="" method="post">
+                    <form id="reponse" action="{{route('resultat')}}" method="post">
                         @csrf
                         @foreach ($datas as $data)
                             @if ($i === 1)
@@ -136,10 +136,12 @@
                     document.getElementById("" + qst).style.display = "none";
                     document.getElementById("" + (qst + 1)).style.display = "block";    
                 }
+            
             }
-            if(qst === 60){
+            if(qst === 5){
                 btn1.classList.add("disabled")
                 btn2.classList.add("disabled")
+                document.getElementById("reponse").submit();
             }
         }
 

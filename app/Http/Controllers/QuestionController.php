@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Question;
+use App\Models\Option;
 use Illuminate\Support\Str;
+
 
 class QuestionController extends Controller
 {

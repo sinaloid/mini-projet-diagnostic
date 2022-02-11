@@ -33,6 +33,10 @@ class Controller extends BaseController
         return view('diagnos_test', compact('datas','i'));
     }
 
+    public function resultat(Request $request){
+        dd($request);
+    }
+
     public function createCategorie(){
         $categories = ['Attitude de fuite ou Passivité', 
         'Attitude dattaque ou Agressivité', 

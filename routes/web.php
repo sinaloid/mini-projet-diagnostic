@@ -23,6 +23,7 @@ Route::get('apropos', function () { return view('apropos');})->name('apropos');
 Route::get('diagnostic', function () { return view('diagnostic');})->name('diagnostic');
 //Route::get('diagnostic/test', function () { return view('diagnos_test');})->name('test');
 Route::get('diagnostic/test',[Controller::class, 'test'])->name('test');
+Route::get('diagnostic/resultat',[Controller::class, 'resultat'])->name('resultat');
 
 
 
