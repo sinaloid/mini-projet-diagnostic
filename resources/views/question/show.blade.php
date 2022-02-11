@@ -15,7 +15,7 @@
                             <p>{{ $question->question }}</p>
                         </div>
                         <a class="btn sm-black mt-2" href="{{route('question.edit', $question->slug)}}"> Modifier</a>
-                        <a class="btn sm-black mt-2" href="{{route('question')}}"> Retour</a>
+                        <a class="btn sm-black mt-2" href="{{route('allQuestion')}}"> Retour</a>
                     </div>
                 </div>
             </div>

@@ -50,9 +50,10 @@
 
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn sm-black">
+                                    <button type="submit" class="btn sm-black mt-2">
                                         Enregistrer
                                     </button>
+                                    <a class="btn sm-black mt-2" href="{{route('allQuestion')}}"> Retour</a>
                                 </div>
                             </div>
                         </form>

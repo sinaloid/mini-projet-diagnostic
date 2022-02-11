@@ -42,14 +42,14 @@
                     @endif
 
                     @if (Route::currentRouteName() === 'allQuestion')
-                        <a class="btn sm-black mb-3" href="{{route('question.create')}}">Creation/Modification</a>
+                        <a class="btn sm-black mb-3" href="{{route('question.create')}}">Créer une question</a>
                         @include('includes.question')
                     @else
                         @if (Route::currentRouteName() === 'allUser')
-                            <a class="btn sm-black mb-3" href="{{route('user.create')}}">Creation/Modification</a>
+                            <a class="btn sm-black mb-3" href="{{route('user.create')}}">Créer un utilisateur</a>
                             @include('includes.user')
                         @else
-                            <a class="btn sm-black mb-3" href="{{route('diagnostic')}}">Nouveau diagnostic</a>
+                            <a class="btn sm-black mb-3" href="{{route('diagnostic')}}">Créer un diagnostic</a>
                             @include('includes.list_diagnostic')
                         @endif
                     @endif

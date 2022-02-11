@@ -65,9 +65,10 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn sm-black">
+                                <button type="submit" class="btn sm-black mt-2">
                                     Modifier
                                 </button>
+                                <a class="btn sm-black mt-2" href="{{route('allUser')}}"> Retour</a>
                             </div>
                         </div>
                     </form>
