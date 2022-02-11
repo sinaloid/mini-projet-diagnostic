@@ -18,7 +18,7 @@
                             @endif
                             
                             <div class="d-inline-block">
-                                    <a href="{{route('allDiagnostic')}}" class="badge badge-lg btn sm-black btn-sm  ">liste</a>
+                                    <a href="{{route('allDiagnostic')}}" class="badge badge-lg btn sm-black btn-sm  ">Diagnostics</a>
                                     @php
                                          $idAdmin = App\Models\Option::all()->first();
                                         if(isset($idAdmin)){
