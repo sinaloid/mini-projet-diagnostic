@@ -141,7 +141,7 @@
             if(qst === 60){
                 btn1.classList.add("disabled")
                 btn2.classList.add("disabled")
-                document.getElementById("reponse").submit();
+                //document.getElementById("reponse").submit();
             }
         }
 
