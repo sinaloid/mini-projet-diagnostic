@@ -25,7 +25,7 @@
                                             $isAdmin = ($idAdmin->user_id == auth()->user()->id) ? true : false;
                                         }
                                     @endphp
-                                    @if ($isAdmin)
+                                    @if (isset($idAdmin))
                                         <a href="{{route('allQuestion')}}" class="badge badge-lg btn sm-black btn-sm  ">questions</a>
                                         <a href="{{route('allUser')}}" class="badge badge-lg btn sm-black btn-sm ">utilisateurs</a>
                                     @endif
