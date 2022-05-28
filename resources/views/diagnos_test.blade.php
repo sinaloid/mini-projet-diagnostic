@@ -36,17 +36,17 @@
                         @csrf
                         @foreach ($datas as $data)
                             @if ($i === 1)
-                                <p id="{{$i}}" class="text-center card-text font-weight-bold" style="font-size: 1.4em">{{ $data->question }}</p>
+                                <p id="{{$i}}" class="text-center card-text font-weight-bold" style="font-size: 1.4em">{{ $data->question.' '.$i }}</p>
                                 @php
                                 $i++;
                                 @endphp
                             @else
-                                <p id="{{$i}}" class="text-center card-text font-weight-bold" style="display:none; font-size: 1.4em">{{ $data->question }}</p>
+                                <p id="{{$i}}" class="text-center card-text font-weight-bold" style="display:none; font-size: 1.4em">{{ $data->question.' '.$i }}</p>
                                 @php
                                 $i++;
                                 @endphp
                             @endif
-                            <input type="hidden" name="hidden_1" id="hidden" value="{{$data->categorie}}"/>
+                            <input type="hidden" name="hidden_0" id="hidden_0" value="{{$data->categorie_id}}"/>
                         @endforeach
                         <input type="hidden" name="hidden_1" id="hidden_1" value="0" />
                         <input type="hidden" name="hidden_2" id="hidden_2" value="0" />
@@ -77,7 +77,7 @@
         var btn1 = document.getElementById("btn1");
         var btn2 = document.getElementById("btn2");
 
-        var hidden = document.getElementById("hidden");
+        var hidden_0 = document.getElementById("hidden_0");
         var hidden_1 = document.getElementById("hidden_1");
         var hidden_2 = document.getElementById("hidden_2");
         var hidden_3 = document.getElementById("hidden_3");
@@ -86,7 +86,7 @@
         var minutesLabel = document.getElementById("minutes");
         var secondsLabel = document.getElementById("seconds");
         var qst = 1;
-        per = 1;
+        per = 1; //pour le pourcentage
         var totalSeconds = 0;
         var time = setInterval(setTime, 1000);
         
@@ -111,23 +111,19 @@
 
         function reponse(val){
             if(qst < 60){
-                qst++;
-                per++;
-                question.innerHTML = qst;
-                tmp = (parseInt(per * 100 / 60)) + "%"
-                pourcentage.innerHTML = tmp;
-                progess.style.width = tmp
+                
 
-                if(hidden.value === 1){
+                if(hidden_0.value == 1){
+                    console.log(qst)
                     hidden_1.value = hidden_1.value + 1;
                     document.getElementById("" + qst).style.display = "none";
                     document.getElementById("" + (qst + 1)).style.display = "block";
                     
-                }else if(hidden.value === 2){
+                }else if(hidden_0.value == 2){
                     hidden_2.value = hidden_2.value + 1;     
                     document.getElementById("" + qst).style.display = "none";
                     document.getElementById("" + (qst + 1)).style.display = "block";
-                }else if(hidden.value === 3){
+                }else if(hidden_0.value == 3){
                     hidden_3.value = hidden_3.value + 1;     
                     document.getElementById("" + qst).style.display = "none";
                     document.getElementById("" + (qst + 1)).style.display = "block";
@@ -136,6 +132,13 @@
                     document.getElementById("" + qst).style.display = "none";
                     document.getElementById("" + (qst + 1)).style.display = "block";    
                 }
+
+                qst++;
+                per++; 
+                question.innerHTML = qst;
+                tmp = (parseInt(per * 100 / 60)) + "%"
+                pourcentage.innerHTML = tmp;
+                progess.style.width = tmp
             
             }
             if(qst === 60){
