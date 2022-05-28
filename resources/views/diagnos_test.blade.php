@@ -5,7 +5,6 @@
 @endsection
 
 @section('script')
-
 @endsection
 
 @section('content')
@@ -32,41 +31,50 @@
             </table>
             <div class="row">
                 <div class="col-12">
-                    <form id="reponse" action="{{route('resultat')}}" method="post">
+                    <form id="reponse" action="{{ route('resultat') }}" method="post">
                         @csrf
                         @foreach ($datas as $data)
                             @if ($i === 1)
-                                <p id="{{$i}}" class="text-center card-text font-weight-bold" style="font-size: 1.4em">{{ $data->question.' '.$i }}</p>
+                                <p id="{{ $i }}" class="text-center card-text font-weight-bold"
+                                    style="font-size: 1.4em">{{ $data->question . ' ' . $i }}</p>
                                 @php
-                                $i++;
+                                    $i++;
                                 @endphp
                             @else
-                                <p id="{{$i}}" class="text-center card-text font-weight-bold" style="display:none; font-size: 1.4em">{{ $data->question.' '.$i }}</p>
+                                <p id="{{ $i }}" class="text-center card-text font-weight-bold"
+                                    style="display:none; font-size: 1.4em">{{ $data->question . ' ' . $i }}</p>
                                 @php
-                                $i++;
+                                    $i++;
                                 @endphp
                             @endif
-                            <input type="hidden" name="hidden_0" id="hidden_0" value="{{$data->categorie_id}}"/>
+                            <input type="hidden" name="hidden_0" id="hidden_0" value="{{ $data->categorie_id }}" />
                         @endforeach
                         <input type="hidden" name="hidden_1" id="hidden_1" value="0" />
                         <input type="hidden" name="hidden_2" id="hidden_2" value="0" />
                         <input type="hidden" name="hidden_3" id="hidden_3" value="0" />
                         <input type="hidden" name="hidden_4" id="hidden_4" value="0" />
-                        
+
                     </form>
 
                     <div class="text-center my-2">
-                        <Button id="btn1" onclick="reponse(1)" class="btn sm-black">plutôt vrai</Button>
-                        <Button id="btn2" onclick="reponse(0)" class="btn sm-black">plutôt faux</Button>
+                        <Button id="btn1" onclick="setReponse(1)" class="btn sm-black">plutôt vrai</Button>
+                        <Button id="btn2" onclick="setReponse(0)" class="btn sm-black">plutôt faux</Button>
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <div class="col-8 mx-auto mt-1 py-4 card">
             <div class="col-12 text-center">
                 <a class="btn mt-2 sm-black" href="#">Voir les questions</a>
                 <a class="btn mt-2 sm-black" href="#">Resultat pdf ou csv</a>
+            </div>
+        </div>
+        <div class="col-8 mx-auto mt-1 py-4 card">
+            <div class="col-12 text-center">
+                <div>
+                    <canvas id="myChart"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -89,15 +97,19 @@
         per = 1; //pour le pourcentage
         var totalSeconds = 0;
         var time = setInterval(setTime, 1000);
-        
+        res1 = 0
+        res2 = 0
+        res3 = 0
+        res4 = 0
+
         function setTime() {
             ++totalSeconds;
             secondsLabel.innerHTML = pad(totalSeconds % 60);
             minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
             minute = totalSeconds / 60;
-            if(minute === 20){
-            clearInterval(time)
-        }
+            if (minute === 20) {
+                clearInterval(time)
+            }
         }
 
         function pad(val) {
@@ -109,44 +121,80 @@
             }
         }
 
-        function reponse(val){
-            if(qst < 60){
-                
+        function setReponse(val) {
+            if (qst < 60) {
 
-                if(hidden_0.value == 1){
-                    console.log(qst)
-                    hidden_1.value = hidden_1.value + 1;
+                if (hidden_0.value == 1) {
+                    res1 = res1 + val;
+                    hidden_1.value = res1
                     document.getElementById("" + qst).style.display = "none";
                     document.getElementById("" + (qst + 1)).style.display = "block";
-                    
-                }else if(hidden_0.value == 2){
-                    hidden_2.value = hidden_2.value + 1;     
+
+                } else if (hidden_0.value == 2) {
+                    res2 = res2 + val;
+                    hidden_2.value = res2
                     document.getElementById("" + qst).style.display = "none";
                     document.getElementById("" + (qst + 1)).style.display = "block";
-                }else if(hidden_0.value == 3){
-                    hidden_3.value = hidden_3.value + 1;     
+                } else if (hidden_0.value == 3) {
+                    res3 = res3 + val;
+                    hidden_3.value = res3
                     document.getElementById("" + qst).style.display = "none";
                     document.getElementById("" + (qst + 1)).style.display = "block";
-                }else{
-                    hidden_4.value = hidden_4.value + 1; 
+                } else {
+                    res4 = res4 + val;
+                    hidden_4.value = res4
                     document.getElementById("" + qst).style.display = "none";
-                    document.getElementById("" + (qst + 1)).style.display = "block";    
+                    document.getElementById("" + (qst + 1)).style.display = "block";
                 }
 
+                console.log('res1 '+res1)
                 qst++;
-                per++; 
+                per++;
                 question.innerHTML = qst;
                 tmp = (parseInt(per * 100 / 60)) + "%"
                 pourcentage.innerHTML = tmp;
                 progess.style.width = tmp
-            
+
             }
-            if(qst === 60){
+            if (qst === 60) {
                 btn1.classList.add("disabled")
                 btn2.classList.add("disabled")
                 //document.getElementById("reponse").submit();
             }
+            myData.datasets[0].data = [res1, res2, res3, res4]
+            //console.log(config)
+            myChart.update()
         }
 
+
+        
+
+        myData = {
+        labels : [
+            'attitude de fuite',
+            'attitude d\'attaque',
+            'attitude de manipulation',
+            'attitude assertive',
+        ],
+        datasets: [{
+                label: "",
+                fill: false,
+                backgroundColor: 'rgb(190, 99, 255, 0.6)',
+                borderColor: 'rgb(190, 99, 255)',
+                data: [res1, res2, res3, res4],
+            }
+        ],
+        options: {
+        }
+    };
+    
+    var ctx = document.getElementById('myChart');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: myData
+    });
+        
+
     </script>
+    
 @endsection
