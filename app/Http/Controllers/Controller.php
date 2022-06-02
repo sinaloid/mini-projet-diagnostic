@@ -34,7 +34,13 @@ class Controller extends BaseController
     }
 
     public function resultat(Request $request){
-        dd($request);
+        $datas =[
+            "hidden_1" => $request->hidden_1,
+            "hidden_2" => $request->hidden_2,
+            "hidden_3" => $request->hidden_3,
+            "hidden_4" => $request->hidden_4];
+            //dd($datas);
+        return view('resultat', compact('datas'));
     }
 
     public function createCategorie(){
