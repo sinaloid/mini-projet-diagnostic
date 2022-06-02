@@ -18,11 +18,11 @@
 
                                 <div class="col-md-6">
                                     <select class="form-control @error('categorie') is-invalid @enderror" name="categorie"
-                                        required id="categorie" value="{{$question->id_categorie}}">
-                                        <option value="1">Attitude de fuite/passivité</option>
-                                        <option value="2">Attitude d'attaque/agressivité</option>
-                                        <option value="3">Attitude de Manipulation</option>
-                                        <option value="4">Attitude assertive</option>
+                                        required id="categorie">
+                                        <option {{($question->categorie_id == 1) ? 'selected' : null}}  value="1">Attitude de fuite/passivité</option>
+                                        <option {{($question->categorie_id == 2)  ? 'selected' : null}} value="2">Attitude d'attaque/agressivité</option>
+                                        <option {{($question->categorie_id == 3)  ? 'selected' : null}} value="3">Attitude de Manipulation</option>
+                                        <option {{($question->categorie_id == 4)  ? 'selected' : null}} value="4">Attitude assertive</option>
                                     </select>
                                     @error('categorie')
                                         <span class="invalid-feedback" role="alert">

@@ -36,18 +36,19 @@
                         @foreach ($datas as $data)
                             @if ($i === 1)
                                 <p id="{{ $i }}" class="text-center card-text font-weight-bold"
-                                    style="font-size: 1.4em">{{ $data->question . ' ' . $i }}</p>
+                                    style="font-size: 1.4em">{{ $data->question}}</p>
+                                <input type="hidden" id="cate_{{$i }}" value="{{ $data->categorie_id }}" />
                                 @php
                                     $i++;
                                 @endphp
                             @else
                                 <p id="{{ $i }}" class="text-center card-text font-weight-bold"
-                                    style="display:none; font-size: 1.4em">{{ $data->question . ' ' . $i }}</p>
+                                    style="display:none; font-size: 1.4em">{{ $data->question}}</p>
                                 @php
                                     $i++;
                                 @endphp
                             @endif
-                            <input type="hidden" name="hidden_0" id="hidden_0" value="{{ $data->categorie_id }}" />
+                            <input type="hidden" id="cate_{{$i }}" value="{{ $data->categorie_id }}" />
                         @endforeach
                         <input type="hidden" name="hidden_1" id="hidden_1" value="0" />
                         <input type="hidden" name="hidden_2" id="hidden_2" value="0" />
@@ -85,7 +86,6 @@
         var btn1 = document.getElementById("btn1");
         var btn2 = document.getElementById("btn2");
 
-        var hidden_0 = document.getElementById("hidden_0");
         var hidden_1 = document.getElementById("hidden_1");
         var hidden_2 = document.getElementById("hidden_2");
         var hidden_3 = document.getElementById("hidden_3");
@@ -120,22 +120,24 @@
                 return valString;
             }
         }
-
         function setReponse(val) {
+            
             if (qst < 60) {
-
-                if (hidden_0.value == 1) {
+            hidden_0 = document.getElementById(`cate_${qst}`)
+                console.log(hidden_0)
+                console.log("hidden : "+`cate_${qst}`);
+                if (hidden_0.value == "1") {
                     res1 = res1 + val;
                     hidden_1.value = res1
                     document.getElementById("" + qst).style.display = "none";
                     document.getElementById("" + (qst + 1)).style.display = "block";
 
-                } else if (hidden_0.value == 2) {
+                } else if (hidden_0.value == "2") {
                     res2 = res2 + val;
                     hidden_2.value = res2
                     document.getElementById("" + qst).style.display = "none";
                     document.getElementById("" + (qst + 1)).style.display = "block";
-                } else if (hidden_0.value == 3) {
+                } else if (hidden_0.value == "3") {
                     res3 = res3 + val;
                     hidden_3.value = res3
                     document.getElementById("" + qst).style.display = "none";
@@ -148,6 +150,9 @@
                 }
 
                 console.log('res1 '+res1)
+                console.log('res2 '+res2)
+                console.log('res3 '+res3)
+                console.log('res4 '+res4)
                 qst++;
                 per++;
                 question.innerHTML = qst;
@@ -162,7 +167,7 @@
                 //document.getElementById("reponse").submit();
             }
             myData.datasets[0].data = [res1, res2, res3, res4]
-            //console.log(config)
+            console.log([res1, res2, res3, res4])
             myChart.update()
         }
 
