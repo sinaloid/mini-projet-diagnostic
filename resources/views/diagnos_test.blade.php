@@ -175,7 +175,7 @@
                 btn2.style.display = "none"
                 btn_reprendre.style.display = "inline-block"
 
-                if (test_minute >= 3) {
+                if (test_minute >= 1) {
                     btn_resultat.style.display = "inline-block"
                 } else {
                     document.getElementById("test_null").style.display = "block"
