@@ -170,7 +170,7 @@
                 progess.style.width = tmp
 
             }
-            if (qst === 61) {
+            if (qst === 60) {
                 btn1.style.display = "none"
                 btn2.style.display = "none"
                 btn_reprendre.style.display = "inline-block"
