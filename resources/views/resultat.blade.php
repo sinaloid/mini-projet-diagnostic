@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <p class="text-center card-text my-2">
-                        <a href="#" class="mx-auto btn btn-call">
+                        <a href="{{route('resultat_pdf', $datas)}}" class="mx-auto btn btn-call">
                             Télécharger en pdf
                         </a>
                     </p>
@@ -61,6 +61,8 @@
             type: 'line',
             data: myData
         });
+        var image = myChart.toBase64Image()
+        console.log(image)
         </script>
         
     </div>

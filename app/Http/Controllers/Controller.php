@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 use App\Models\Categorie;
 use App\Models\Role;
@@ -41,6 +42,13 @@ class Controller extends BaseController
             "hidden_4" => $request->hidden_4];
             //dd($datas);
         return view('resultat', compact('datas'));
+    }
+
+    public function pdf($data = []){
+       // dd($data);
+        $pdf = PDF::loadView('resultat_pdf', $data);
+        
+        return $pdf->download('mon_resultat.pdf');
     }
 
     public function createCategorie(){

@@ -51,3 +51,4 @@ Route::get('createRole', [Controller::class, 'createRole']);
 Route::get('createSuperUser', [Controller::class, 'createSuperUser']);
 Route::resource('question', QuestionController::class);
 Route::post('resultat', [Controller::class, 'resultat'])->name('resultat');
+Route::get('resultat/pdf', [Controller::class, 'pdf'])->name('resultat_pdf');

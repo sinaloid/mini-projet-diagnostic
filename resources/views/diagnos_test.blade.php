@@ -93,6 +93,7 @@
         var hidden_2 = document.getElementById("hidden_2");
         var hidden_3 = document.getElementById("hidden_3");
         var hidden_4 = document.getElementById("hidden_4");
+        var image = document.getElementById("hidden_5");
 
         var minutesLabel = document.getElementById("minutes");
         var secondsLabel = document.getElementById("seconds");
@@ -170,12 +171,12 @@
                 progess.style.width = tmp
 
             }
-            if (qst === 60) {
+            if (qst === 3) {
                 btn1.style.display = "none"
                 btn2.style.display = "none"
                 btn_reprendre.style.display = "inline-block"
 
-                if (test_minute >= 1) {
+                if (test_minute >= 0) {
                     btn_resultat.style.display = "inline-block"
                 } else {
                     document.getElementById("test_null").style.display = "block"
