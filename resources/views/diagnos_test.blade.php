@@ -131,7 +131,7 @@
 
         function setReponse(val) {
 
-            if (qst < 60) {
+            if (qst <= 60) {
                 hidden_0 = document.getElementById(`cate_${qst}`)
                 console.log(hidden_0)
                 console.log("hidden : " + `cate_${qst}`);
